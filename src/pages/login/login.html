@@ -1,0 +1,76 @@
+
+
+<ion-content >
+     <!--    <mbsc-form class="md-login-form" [options]="formSettings">
+                <form [formGroup]="loginForm" novalidate>
+                    <div class="md-logo  icon-mbsc-logo"> My Wallet
+                        <!-- <ion-img src="../../assets/imgs/logo1.png"  ></ion-img> -->
+                    <!-- </div> 
+                    <div class="mbsc-form-group-inset">
+                        <mbsc-input  formControlName="email" name="Email" placeholder="Email" [error]="loginForm.controls.email.invalid && loginForm.controls.email.dirty" [errorMessage]="errorFor('email')"></mbsc-input>
+                        <mbsc-input  formControlName="username" name="Username" placeholder="Username" *ngIf="!isLogin" ng-hide="true" icon="none" icon-align="right" ></mbsc-input>
+                        <mbsc-input  formControlName="password" name="password" type="text" placeholder="Password" password-toggle="false" icon="none" icon-align="right" [error]="loginForm.controls.password.invalid && loginForm.controls.password.dirty" [errorMessage]="errorFor('password')"></mbsc-input>
+                    </div>
+                    <div class="mbsc-form-group-inset mbsc-padding mbsc-align-center">
+                        <a href="#" *ngIf="isLogin" (click)="isLogin = false">Don't have an account yet? Sign up.</a>
+                        <a href="#" *ngIf="!isLogin" (click)="isLogin = true">Already have an account?</a>
+                        <br><br>
+                        <a href="#">Forgot password?</a>
+                    </div>
+                    <div class="mbsc-form-group-inset mbsc-padding">
+                        <mbsc-button block *ngIf="isLogin" [disabled]="loginForm.invalid && attemptedSubmit" (click)="logIn()">Sign in</mbsc-button>
+                        <mbsc-button block *ngIf="!isLogin" [disabled]="loginForm.invalid && attemptedSubmit" (click)="signUp()">Sign up</mbsc-button>
+                    </div>
+                </form> 
+            </mbsc-form> -->
+
+            <ion-content class="background">
+                <b><img src="../../assets/imgs/logo1.png" alt="logo" width="200" height="200"></b>
+                <ion-card>
+                  <ion-card-header>
+                    LOGIN
+                  </ion-card-header>
+                  <ion-card-content>
+                    <ion-list no-lines [formGroup]="loginForm" novalidate>
+                      <ion-item>
+                        <ion-label  floating>Email</ion-label>
+                        <ion-input type="text" formControlName="email" ></ion-input>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label floating>Password</ion-label>
+                        <ion-input type="password"formControlName="password"></ion-input>
+                      </ion-item>
+                      <ion-item>
+                        <p>Forgot Password ? <a>Get Your password</a></p>
+                      </ion-item>
+                      <button ion-button outline block color="danger" (click)="logIn()">Login</button>
+
+                    </ion-list>
+                    <b>OR</b>
+                    <ion-row>
+                      <ion-col>
+                        <button ion-button icon-left block (click)="loginWithFB()">
+                      <ion-icon name="logo-facebook"></ion-icon>
+                      <div>login with facebook</div>
+                    </button>
+                      </ion-col>
+                      <ion-col>
+                        <button ion-button icon-left color="danger" block>
+                      <ion-icon name="logo-google"></ion-icon>
+                      <div>login with Google</div>
+                    </button>
+                      </ion-col>
+                    </ion-row>
+              
+                  </ion-card-content>
+                </ion-card>
+                <ion-card *ngIf="userData">
+                  <ion-card-header>{{ userData.username }}</ion-card-header>
+                  <img [src]="userData.picture" />
+                  <ion-card-content>
+                    <p>Email: {{ userData.email }}</p>
+                    <p>First Name: {{ userData.first_name }}</p>
+                  </ion-card-content>
+                </ion-card>
+              </ion-content>
+</ion-content>

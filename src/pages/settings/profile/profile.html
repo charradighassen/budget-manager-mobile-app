@@ -1,0 +1,52 @@
+<ion-header>
+
+    <ion-navbar >
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-buttons start>
+          <button ion-button icon-only (click)="cancel()">
+            <ion-icon name="md-close" color="danger"></ion-icon>
+          </button>
+        </ion-buttons>
+      <ion-title>
+       Profile
+      </ion-title>
+  
+      <ion-buttons end>
+        <button ion-button icon-only (click)="save()">
+          <ion-icon name="md-checkbox-outline" color="secondary"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+
+<ion-content padding>
+  <form #formCtrl="ngForm">
+      <div align="center" >
+      <img class="profile-image" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200" (click)="changeimage()" > 
+      <h2>{{person.imgUrl}} </h2> 
+    </div>
+    <div align="center" *ngIf="formCtrl.form.valid">
+      <h4>{{person.firstname}}, {{person.lastName}}, {{person.company}}</h4>
+      <h5>{{age}} years old</h5>
+    </div>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input type="text" [(ngModel)]="person.userName" name="userName" required></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="text" [(ngModel)]="person.email" name="email" required></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>password</ion-label>
+        <ion-datetime required name="birthdate" displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="dob" [ngModelOptions]="{standalone:true}"></ion-datetime>
+      </ion-item>
+
+    </ion-list>
+  </form>
+</ion-content>

@@ -1,0 +1,43 @@
+<ion-header >
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+
+  <ion-segment [(ngModel)]="selectedSegment" (ionChange)="onSegmentChanged($event)">
+    <ion-segment-button value="incomes">
+      Incomes
+    </ion-segment-button>
+    <ion-segment-button value="expenses">
+      expenses
+    </ion-segment-button>
+  </ion-segment>
+
+</ion-header>
+
+<ion-content padding parallax-header color="light">
+  <ion-slides #mySlider (ionSlideDidChange)="onSlideChanged($event)">
+    <ion-slide *ngFor="let slide of slides">
+      <div [ngSwitch]="selectedSegment"  >
+        <ion-list *ngSwitchCase=slide.id >
+                <ion-card>
+                        <img src="https://ionicframework.com/dist/preview-app/www/assets/img/card-saopaolo.png"/>
+                        <div class="card-title">{{slide.content}}</div>
+                        <div class="card-subtitle">41 Listings</div>
+                </ion-card>       
+        </ion-list>
+      </div>
+    </ion-slide>
+  </ion-slides>
+  <ion-fab bottom right >
+      <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+      <ion-fab-list side="top">
+        <button ion-fab mini><ion-icon name="logo-facebook"></ion-icon></button>
+        <button ion-fab mini><ion-icon name="logo-twitter"></ion-icon></button>
+        <button ion-fab mini><ion-icon name="logo-vimeo"></ion-icon></button>
+      </ion-fab-list>
+    </ion-fab>
+</ion-content>
+

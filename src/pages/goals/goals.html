@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Goals</ion-title>
+  </ion-navbar>
+
+  <ion-segment [(ngModel)]="selectedSegment" (ionChange)="onSegmentChanged($event)">
+    <ion-segment-button value="Done">
+      Done
+    </ion-segment-button>
+    <ion-segment-button value="Doing">
+      Doing
+    </ion-segment-button>
+    <ion-segment-button value="ToDo">
+      To do
+    </ion-segment-button>
+  </ion-segment>
+
+</ion-header>
+
+<ion-content padding parallax-header>
+  <ion-slides #mySlider (ionSlideDidChange)="onSlideChanged($event)">
+    <ion-slide *ngFor="let slide of slides">
+      <ion-list [ngSwitch]="selectedSegment">
+        <div *ngSwitchCase=slide.id>
+
+          <div class="slide-in">
+            <ion-card *ngFor="  let item of slide.list | async">
+<!-- 
+              <div class="row ">
+                <div class=" col-2  circle" ng-style="border-color: item ">{{item.name.charAt(0)}} </div>
+
+                <div class="col col-4 items" text-left>{{item.name}}</div>
+                <div class="col col-8 items" text-center>{{item.amount}} $</div>
+                <div class="col col-2 more" text-right>
+                  <ion-icon name="md-more" (click)="presentPopover($event,item,item.$key)">
+
+                  </ion-icon>
+                </div>
+
+              </div> -->
+
+            </ion-card>
+          </div>
+        </div>
+      </ion-list>
+
+      <i class="fas fa-chart-pie"></i>
+    </ion-slide>
+  </ion-slides>
+  <ion-fab bottom center>
+    <button ion-fab>
+      <ion-icon name="md-add"></ion-icon>
+    </button>
+
+  </ion-fab>
+</ion-content>

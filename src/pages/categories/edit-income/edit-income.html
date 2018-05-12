@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar >
+    <ion-title>Edit  {{incomeItem.name}} </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="save(incomeItem)">
+        <ion-icon name="md-checkbox-outline" color="secondary"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-item>
+        <ion-label floating>Income Name</ion-label>
+        <ion-input type="text" [(ngModel)]="incomeItem.name"> {{incomeItem.name}}</ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label floating>Amount</ion-label>
+        <ion-input type="number"  [(ngModel)]="incomeItem.amount">{{incomeItem.amount}}</ion-input>
+      </ion-item>
+    
+      <ion-item>
+          <ion-label floating>Color</ion-label>
+          <ion-input type="color"  [(ngModel)]="incomeItem.color" value="incomeItem.color"></ion-input>
+        </ion-item>
+</ion-content>

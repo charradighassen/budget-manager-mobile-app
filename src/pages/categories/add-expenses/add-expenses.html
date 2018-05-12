@@ -1,0 +1,31 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+      <ion-title>Add Expense</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="addExpensesItem(expensesItem)">
+          <ion-icon name="md-checkbox-outline" color="secondary"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content padding>
+  
+    <ion-item>
+      <ion-label floating>Expense Name</ion-label>
+      <ion-input type="text" [(ngModel)]="expensesItem.name"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label floating>Amount</ion-label>
+      <ion-input type="number"  [(ngModel)]="expensesItem.amount"></ion-input>
+    </ion-item>
+  
+    <ion-item class="row">
+        <ion-label class="col col-3" >Pick Color</ion-label>
+        <ion-input class="col col-3 "   type="color"  id="color"  [(ngModel)]="expensesItem.color" ></ion-input>
+      </ion-item>
+  
+  </ion-content>

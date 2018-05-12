@@ -1,0 +1,100 @@
+page-signup {
+    
+        /*  .md-login-form .md-logo {
+             display: inline-block;
+             width: 100%;
+             font-size: 60px;
+             text-align: center;
+             height: 46px;
+             margin: 130px 0 30px 0;
+           //  color: #1c75bc;
+           color: ghostwhite;
+         }
+         /* .scroll-content{
+             background-color: rgba(47, 160, 194, 0.575);
+     
+             padding: 0;
+         } 
+         .mbsc-mobiscroll.mbsc-form{
+             background:#00aee0;
+             ::after{
+                 background:#00aee0!important;
+                 content: none !important;
+     
+             }
+         }
+         ion-img{
+             contain: content;
+             align-content: center;
+             align-items: center;
+             position:fixed;
+             
+         }
+         .mbsc-mobiscroll a {
+             color: #d4e7ec !important;
+         }
+         .mbsc-mobiscroll .mbsc-btn{
+             .mbsc-btn:disabled{
+             }
+             background-image: initial;
+             padding: .6875em;
+             background: rgba(1, 3, 14, 0.295);
+             color:rgb(208, 210, 211);
+             font-size: 1em;
+             text-transform: uppercase;
+         }
+      */
+          .background {
+             //width: 100%;
+             //height: 100%;
+           // background: #FC664E  ;
+           //background: linear-gradient(360deg, #4E5EFC  ,#4EE7FC,);
+          // background: linear-gradient(25deg,#ff0000,#f12b94,#d323cd,#f12b5b,#f54526);
+          background: linear-gradient(25deg,#0b20d6,#0ae6c8,#185d7e,#46ebcf,#5b869b);
+                 background-size: 400% 400%;
+                 animation: colorchange 25s ease-out infinite;
+                 @keyframes colorchange {
+                     0%{background-position: 0% 99%}
+                     50%{background-position: 100% 1%}
+                     100%{background-position: 10% 90%}
+                 }
+           }
+           img{
+               padding: 5px;
+               margin: 0px;
+           }
+           .scroll-content {
+             align-content: center;
+            // display: flex;
+             //flex-direction: column;
+             //justify-content: center;
+             text-align: center;
+           }
+           ion-card.card {
+             box-shadow: none;
+             background: rgba(255, 255, 255, 0.85px);
+             border-radius: 10px;
+             z-index: 100;
+             
+           }
+           .item {
+             background: rgba(232, 230, 230, 0px);
+             border: medium none;
+           }
+           ion-input {
+             border-bottom: #FD4D73 solid 1px;
+     
+           }
+           ion-label{
+               text-decoration-color: black !important;
+           }
+           h1{
+             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+             font-size: 3em;
+             font-weight: lighter;
+             color: #fff;
+           } 
+     
+     
+     
+}

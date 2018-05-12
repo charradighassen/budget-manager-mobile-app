@@ -1,0 +1,49 @@
+<ion-header >
+  <ion-navbar>
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Saving</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header ng-style="{ 'text-color':balnce >= 0 ? 'secondary' : 'primary'}">
+      {{balance}} $
+    </ion-card-header>
+    <ion-card-content>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      Balance
+    </ion-card-header>
+    <ion-card-content>
+      <canvas id="doughnut-chart" style="display:block"></canvas>
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="secondary"> 
+    <ion-card-header class="row item">
+      <div class="col-6" text-left> Incomes</div>
+
+    </ion-card-header>
+    <ion-card-content text-right>
+      {{income}}$
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="primary">
+    <ion-card-header class="row">
+      <div class="col-6" text-left> Expenses</div>
+
+    </ion-card-header >
+    <ion-card-content text-right>
+      {{expenses}}$
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

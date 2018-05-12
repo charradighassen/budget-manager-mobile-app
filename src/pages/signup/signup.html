@@ -1,0 +1,36 @@
+<ion-content class="background">
+  <b>
+    <img src="../../assets/imgs/logo1.png" alt="logo" width="200" height="200">
+  </b>
+  <ion-card>
+    <ion-card-header>
+      REGISTER
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list no-lines [formGroup]="loginForm" novalidate>
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="text" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>UserName</ion-label>
+          <ion-input type="username" formControlName="username"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="md-create"></ion-icon>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <ion-item ></ion-item>
+        <button ion-button outline block color="danger" type="submit" (click)="signUp()">Register</button>
+
+      </ion-list>
+      <ion-item>
+        <a navPush="LoginPage">Already have account?
+        </a>
+      </ion-item>
+
+
+    </ion-card-content>
+    </ion-card>
+</ion-content>

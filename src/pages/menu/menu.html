@@ -1,0 +1,72 @@
+<ion-menu [content]="content">
+  <ion-header >
+    <ion-toolbar color="primary">
+
+      <ion-title>Wallet</ion-title>
+    </ion-toolbar>
+    <ion-thumbnail>
+      
+    </ion-thumbnail>
+  </ion-header>
+
+  <ion-content padding  >
+    <ion-list  no-lines class="slide-in">
+      <button menuClose ion-item class="section" *ngFor="let p of pages" (click)="openPage(p)" no-border>
+
+      <ion-icon [name]="p.icon" [color]="p.color" ></ion-icon>
+        {{p.title}}
+      </button>
+      <button menuClose ion-item (click)="logout()">
+        <ion-icon name="md-log-out" color="primary"></ion-icon>
+        Logout
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu> 
+
+
+<!-- </ion-menu> --><!-- 
+<ion-content>
+  <ion-list class="accordion-list">
+    <!-- First Level -->
+  <!--   <ion-list-header *ngFor="let item of information; let i = index" no-lines no-padding> -->
+      <!-- Toggle Button -->
+     <!--  <button ion-item (click)="toggleSection(i,item)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open} " >
+        <ion-icon item-right name="ios-arrow-dropright-outline" *ngIf="!item.open"></ion-icon>
+        <ion-icon item-right name="ios-arrow-dropdown-outline" *ngIf="item.open"></ion-icon>
+          {{ item.name }}
+      </button> -->
+ 
+      <!-- <ion-list *ngIf="item.children && item.open" no-lines> -->
+        <!-- Second Level -->
+        <!-- <ion-list-header *ngFor="let child of item.children; let j = index" no-padding> -->
+          <!-- Toggle Button -->
+         <!--  <button ion-item (click)="toggleItem(i, j,child)" *ngIf="child.children" class="child" detail-none>
+            <ion-icon item-right name="add" *ngIf="!child.open"></ion-icon>
+            <ion-icon item-right name="close" *ngIf="child.open"></ion-icon>
+            {{ child.name }}
+          </button> -->
+ 
+          <!-- Direct Add Button as Fallback -->
+          <!-- <ion-item *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap>
+            <h2>{{ child.name }}</h2>
+          </ion-item> -->
+ 
+<!--           <ion-list *ngIf="child.children && child.open">
+ -->            <!-- Third Level -->
+            <!-- <ion-item *ngFor="let item of child.children; let k = index" detail-none class="child-item" text-wrap>
+              <h2>{{ item.name }}</h2> -->
+              <!-- Direct Add Button -->
+           <!--  </ion-item>
+          </ion-list>
+ 
+        </ion-list-header>
+      </ion-list>
+      
+    </ion-list-header>
+  </ion-list>
+</ion-content>-->
+
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

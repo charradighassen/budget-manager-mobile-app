@@ -1,0 +1,101 @@
+page-categories {
+  .swiper-pagination {
+    @include text-align(center);
+    @include transform(translate3d(0, 0, 0));
+    position: absolute;
+    z-index: 5;
+    transition: 100ms;
+    pointer-events: none;
+  }
+  ion-spinner * {
+    width: 28px;
+    height: 28px;
+    stroke: #444;
+    fill: #222;
+  }
+  .slide-in>ion-card {
+    //background:  linear-gradient(25deg,#fff,#68dbd2,#fff);
+    border: 1px solid #0097e6;
+
+  }
+  ion-card-title {
+    position: absolute;
+    top: 15%;
+    padding-left: 10px !important;
+    font-size: 1.3em !important;
+    width: 100%;
+    font-weight: oblique; // color: #fff;
+  }
+  .subtitle {
+    font-size: 1.3em;
+    position: absolute;
+    padding-right: 10px;
+    top: 25%;
+    width: 100%;
+    color: rgb(68, 65, 65);
+  }
+  .segment-md .segment-button {
+    // color: #fff !important;
+    background-color: #0097e6 !important;
+    opacity: 100;
+  }
+  ion-scroll {
+    width: 100%;
+    height: 100%;
+  }
+  ion-slides {
+    height: auto !important;
+  }
+  @-webkit-keyframes slideInSmooth {
+    0% {
+      -webkit-transform: translate3d(-100%, 0, 0);
+    }
+    100% {
+      -webkit-transform: translate3d(0, 0, 0);
+    }
+  }
+  .slide-in {
+    -webkit-animation: slideInSmooth ease-in 1;
+    animation: slideInSmooth ease-in 1;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-duration: 750ms;
+    animation-duration: 750ms;
+  }
+  .row {
+    height: 50px !important;
+    font-variant-position: initial;
+    font-size: 18px;
+    position: initial;
+    padding: 5px;
+  }
+  .chart {
+    height: 200px;
+    ;
+  }
+  .more {
+    padding-right: 15px;
+  }
+  .items {
+    top: 18%;
+    //left: 4%;
+    //padding-left: 5px;
+    
+  }
+  .items::first-letter{
+    text-transform: uppercase;
+  }
+  .circle {
+    position: relative;
+    height: 40px !important;
+    width: 40px !important;
+    background-color: rgb(26, 177, 236);
+    border-radius: 50% !important;
+    margin-top: 2px!important;
+    padding: 5px !important;
+    font-size: 26px;
+    text-transform: uppercase;
+    border-color: honeydew;
+    -webkit-text-fill-color: ghostwhite;
+      }
+}

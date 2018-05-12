@@ -1,0 +1,35 @@
+page-saving {
+  ion-card-header {
+    text-align: center;
+  }
+  ion-card-title {
+    position: absolute;
+    top: 15%;
+    padding-left: 10px !important;
+    font-size: 1.3em !important;
+    width: 100%;
+    font-weight: oblique;
+   // color: #fff;
+  } 
+  .subtitle {
+    font-size: 1.3em;
+    position: absolute;
+    padding-right: 10px;
+    top: 25%;
+    width: 100%;
+    color: rgb(68, 65, 65);
+  }
+  ion-card {
+    padding: 2px;
+  }
+  $card-md-font-size:1.4rem;
+  $card-md-font-wheigt:1.2rem;
+  $card-md-line-height:1;
+  $card-md-padding-start:1px;
+  $card-md-border-radius:5px;
+  $card-md-box-shadow:0 2px 2px 0 rgba(0, 0, 0, .14),
+  0 3px 1px -2px rgba(0, 0, 0, .2),
+  0 2px 3px 0 rgba(0, 0, 0, .12);
+  $card-md-margin-bottom:10px;
+  $card-md-text-color: rgb(63, 61, 61);
+}

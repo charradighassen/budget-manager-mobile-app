@@ -1,0 +1,52 @@
+page-menu {
+  $toolbar-background: blue !important;
+  $toolbar-wp-title-text-align: left;
+  $background-md-color: blue !important;
+  $colors: ( primary: #4585f5, secondary: #32db64, danger: #f53d3d, light: #f4f4f4, dark: #222, yel: #ff0 !important, color1: #8FAADC, color2: #DAE3F3, color3: #3DBCC0);
+  .accordion-list {
+    background: color($colors, light);
+    height: 100%;
+  }
+  .section {
+    background: #fff;
+    color: #000;
+    margin-bottom: 4px;
+  }
+  .section-active {
+    background: #aeaebb;
+    color: #fff;
+  }
+  .child {
+    background: #e8e7e6;
+    color: #000;
+    margin-bottom: 4px;
+  }
+  .child-item {
+    background: #f3f2f1;
+    padding: 10px;
+  }
+  .label {
+    margin: 0px;
+  }
+  .list {
+    margin-bottom: 4px;
+  }
+  @-webkit-keyframes slideInSmooth {
+    0% {
+      -webkit-transform: translate3d(-100%,0,0);
+    }
+    100% {
+      -webkit-transform: translate3d(0,0,0);
+    }
+  }
+  
+  
+  .slide-in{
+     -webkit-animation: slideInSmooth ease-out 1; 
+    animation: slideInSmooth ease-out 1;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-duration: 400ms;
+    animation-duration: 400ms;
+  }
+}

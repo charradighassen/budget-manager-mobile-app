@@ -1,0 +1,27 @@
+{
+    "items": [
+        {
+            "name": "Home",
+            "pageName":"TabsPage", 
+            "component":"CategoriesPage",
+            "index": 0,"icon" :"md-home"
+        },
+        {
+            "name": "Charts",
+            "pageName":"TabsPage", 
+            "component":"ChartPage",
+            "index": 0,"icon" :"md-stat",
+            "children": [
+                {
+                    "name": "Traditional"
+                },
+                {
+                    "name": "Traditional"
+                },
+                {
+                    "name": "Traditional"
+                }
+            ]
+        }
+    ]
+}

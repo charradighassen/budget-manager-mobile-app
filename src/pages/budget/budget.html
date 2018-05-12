@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Budget</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="toaddpage()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <!-- Repeat the ion-item for as many items that we have inside of our shopping list. -->
+    <ion-item-sliding *ngFor="let item of budgetListRef | async " >
+      
+      
+        
+      <ion-item  class="row">
+          <ion-icon name="ios-arrow-back"  class="col col-3"></ion-icon>
+          <h2 class="col col-3"> {{item.name}}</h2>
+          <h3 class="col col-3"> {{item.amount}} $ </h3>
+          <ion-icon name="ios-arrow-forward"  class="col col-3"></ion-icon>
+      </ion-item>
+      
+      <ion-item-options side="right">
+        <button ion-button icon-only  (click)="remouveItem(item.$key)">
+          <ion-icon color="danger" name="trash" class="col col-3"></ion-icon>
+        </button>
+      </ion-item-options>
+      <ion-item-options side="left">
+        <button io-button  icon-only (click)="toEditPage(item)">
+            <ion-icon color="secondary"  name="create" class="col col-3"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+</ion-content>

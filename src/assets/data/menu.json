@@ -1,0 +1,74 @@
+[
+  {
+    "category":"Home"
+  },
+  {
+    "category":"Laptop",
+    "subs": [
+      {
+        "subcategory":"Notebook",
+        "manufactures": [
+          {
+            "manufacture":"Lenovo"
+          },
+          {
+            "manufacture":"Dell"
+          }
+        ]
+      },
+      {
+        "subcategory":"Netbook",
+        "manufactures": [
+          {
+            "manufacture":"Lenovo"
+          },
+          {
+            "manufacture":"Dell"
+          },
+          {
+            "manufacture":"Acer"
+          },
+          {
+            "manufacture":"HP"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category":"Printer",
+    "subs": [
+      {
+        "subcategory":"Laserjet",
+        "manufactures": [
+          {
+            "manufacture":"HP"
+          },
+          {
+            "manufacture":"Brother"
+          },
+          {
+            "manufacture":"Canon"
+          },
+          {
+            "manufacture":"Samsung"
+          }
+        ]
+      },
+      {
+        "subcategory":"Deskjet",
+        "manufactures": [
+          {
+            "manufacture":"HP"
+          },
+          {
+            "manufacture":"Canon"
+          },
+          {
+            "manufacture":"Epson"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Edit </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addBudgetItem(BudgetItem)">
+        <ion-icon name="md-checkbox-outline" color="secondary"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label floating>Budget Name</ion-label>
+    <ion-input type="text" [(ngModel)]="budgetItem.name"> {{item.name}}</ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Montant</ion-label>
+    <ion-input type="number"  [(ngModel)]="budgetItem.amount">{{item.amount}}</ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label floating>Montant</ion-label>
+      <ion-input type="number"  [(ngModel)]="budgetItem.color" value="budgetItem.color"></ion-input>
+    </ion-item>
+  
+
+</ion-content>
