@@ -23,14 +23,14 @@
       
         
       <ion-item  class="row">
-          <ion-icon name="ios-arrow-back"  class="col col-3"></ion-icon>
+          <ion-icon name="ios-arrow-back"  class="col col-3"> < </ion-icon>
           <h2 class="col col-3"> {{item.name}}</h2>
           <h3 class="col col-3"> {{item.amount}} $ </h3>
-          <ion-icon name="ios-arrow-forward"  class="col col-3"></ion-icon>
+          <ion-icon name="ios-arrow-forward"  class="col col-3"> > </ion-icon>
       </ion-item>
       
       <ion-item-options side="right">
-        <button ion-button icon-only  (click)="remouveItem(item.$key)">
+        <button io-button icon-only  (click)="remouveItem(item.$key)">
           <ion-icon color="danger" name="trash" class="col col-3"></ion-icon>
         </button>
       </ion-item-options>

@@ -16,7 +16,7 @@ export class AddExpensesPage {
     , public expensepro: ExpensesServiceProvider
     , private toastCntr: ToastController
   ) {
-
+    this.expensesItem.color= "#000000";
   }
 
   addExpensesItem(expensesItem) {

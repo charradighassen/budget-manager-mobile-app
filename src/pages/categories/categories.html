@@ -24,11 +24,11 @@
         <div *ngSwitchCase=slide.id>
 
           <ion-card>
-            <ion-card-header>
-              {{slide.id}}
+            <ion-card-header color={{slide.color}}>
+              {{slide.id.toUpperCase()}}
             </ion-card-header>
             <ion-card-content>
-              <canvas id="doughnutsIncome-chart" style="display:block"></canvas>
+              <canvas class={{slide.id}} style="display:block"></canvas>
               
             </ion-card-content>
           </ion-card>

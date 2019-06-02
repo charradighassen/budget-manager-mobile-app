@@ -25,7 +25,7 @@ export class AddIncomePage {
     private toastCntr : ToastController
     ) {
       this.animator = animationService.builder();
-      this.incomeItem.color = "#000";
+      this.incomeItem.color = "#000000";
     }
   public addIncomeItem(incomeItem){
     this.incomespro.addItem(incomeItem).then(()=>{

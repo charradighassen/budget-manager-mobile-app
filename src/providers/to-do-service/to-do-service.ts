@@ -1,29 +1,28 @@
-
-import { AngularFireDatabase } from 'angularfire2/database';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GoalItem } from '../../models/goalItem/goalItem';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()
-export class GoalServiceProvider {
+export class ToDoServiceProvider {
 
+  
 
   userId: any;
-  goalsList : Observable<GoalItem[]>;
   constructor(public db:AngularFireDatabase,private afAuth: AngularFireAuth) {
     this.afAuth.authState.subscribe(user => {
       if(user) this.userId = user.uid
     })
   }
-  getGoalsItems(){
+  getToDoItems(){
     if(!this.userId) return;
-    return this.db.list<GoalItem>('goals/'+ this.userId+'/');
+    return this.db.list<GoalItem>('goals/todo/'+ this.userId+'/');
   }
 
-   addItem(GoalItem){
-    return this.db.list<GoalItem>('goals/'+ this.userId+'/').push({
+   addToDoItem(GoalItem){
+    return this.db.list<GoalItem>('goals/todo/'+ this.userId+'/').push({
       name : GoalItem.name,
       description : GoalItem.description,
       startDate : GoalItem.startDate,
@@ -33,8 +32,12 @@ export class GoalServiceProvider {
     });
   }
 
-  remouveItem(id){
-    return this.db.list<GoalItem>('goals/'+ this.userId+'/').remove(id);
+  remouveToDoItem(id){
+    return this.db.list<GoalItem>('goals/todo/'+ this.userId+'/').remove(id);
+  }
+
+  updatetoDoItem(id){
+    
   }
 
 }

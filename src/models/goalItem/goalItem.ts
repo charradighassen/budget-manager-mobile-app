@@ -4,7 +4,8 @@ export interface GoalItem{
     key?: string,
     name:string;
     description:string,
-    date:DateTime,
+    startDate?:DateTime,
+    endDate?:DateTime,
     color?:string
     userId: string;
 }

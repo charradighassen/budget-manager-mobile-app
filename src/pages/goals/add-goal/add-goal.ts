@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { GoalItem } from '../../../models/goalItem/goalItem';
+import { ToDoServiceProvider } from '../../../providers/to-do-service/to-do-service';
+import { DoingServiceProvider } from '../../../providers/doing-service/doing-service';
+import { DoneServiceProvider } from '../../../providers/done-service/done-service';
 
 /**
  * Generated class for the AddGoalPage page.
@@ -15,15 +19,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AddGoalPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  goal = {} as GoalItem;
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private toDoService: ToDoServiceProvider,
+    private doingService: DoingServiceProvider,
+    private doneService: DoneServiceProvider,
+    private toastCtrl: ToastController
+  ) {
+
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddGoalPage');
-  }
 
-  addGoal(){
 
+  addToDoGoal(goal) {
+    this.toDoService.addToDoItem(goal).then(() => {
+      this.navCtrl.pop();
+
+    }).then(() => {
+      this.toastCtrl.create({
+        message: "Added Successfully",
+        duration: 3000
+      })
+    })
   }
 
 

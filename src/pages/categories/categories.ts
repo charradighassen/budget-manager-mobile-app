@@ -1,4 +1,4 @@
-import { Component, ViewChild,  Renderer } from '@angular/core';
+import { Component, ViewChild, Renderer } from '@angular/core';
 import { NavController, Slides, IonicPage, PopoverController, NavParams } from 'ionic-angular';
 import { IncomesServiceProvider } from '../../providers/incomes-service/incomes-service';
 import { ExpensesServiceProvider } from '../../providers/expenses-service/expenses-service';
@@ -9,8 +9,10 @@ import { Chart } from 'chart.js';
 import { Observable } from 'rxjs/Observable';
 import { AnimationBuilder, AnimationService } from 'css-animator';
 import { PopoverComponent } from '../../components/popover/popover';
-import { Change } from '@firebase/database/dist/esm/src/core/view/Change';
-import { AngularFireAuth } from 'angularfire2/auth';
+
+
+
+
 @IonicPage()
 @Component({
   selector: 'page-categories',
@@ -19,57 +21,75 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class CategoriesPage {
 
 
-  chartData: any;
   @ViewChild('mySlider') slider: Slides;
+  @ViewChild('myElement') myElem;
   selectedSegment: string;
   slides: any;
+
   incomesListRef: Observable<any[]> = null;
   incomeItem = {} as IncomesItem;
-  expensesListRef: Observable<ExpensesItem[]> =null;
+  expensesListRef: Observable<ExpensesItem[]> = null;
   expensesItem = {} as ExpensesItem;
+  type: String;
+  arr = [] as Number[];
+  arrColor = [] as string[];
 
-  i: number = 0;
-  amount: Number[];
-  exp = [];
-  @ViewChild('myElement') myElem;
   private animator: AnimationBuilder;
-  type:String;
-  userId:any;
+
   constructor(public navCtrl: NavController,
-    public navParams:NavParams,
+    public navParams: NavParams,
     public incomespro: IncomesServiceProvider,
     public expensesPro: ExpensesServiceProvider,
     public renderer: Renderer,
     animationService: AnimationService,
     public popoverCtrl: PopoverController,
-    private afAuth: AngularFireAuth
 
   ) {
     this.animator = animationService.builder();
-    if(this.incomespro.getIncomeItems()){
+
+    if (this.incomespro.getIncomeItems()) {
       this.incomesListRef = this.incomespro.getIncomeItems()
-      .snapshotChanges()
-      .map(
-        changes => {
-        this.createIncomeChart(changes)
-          return changes
-          .map(c => ({
-            key: c.payload.key, ...c.payload.val(),
-          }))
-        });
-    }
-   
-    if(this.expensesPro.getExpensesItems()){
-      this.expensesListRef = this.expensesPro.getExpensesItems()
-      .snapshotChanges()
-      .map(
-        changes => {
-          return changes.map(c => ({
-            key: c.payload.key, ...c.payload.val()
-          }))
-        });
-    }
+        .snapshotChanges()
+        .map(
+          changes => {
+            return changes
+              .map(c => ({
+                key: c.payload.key, ...c.payload.val(),
+              }))
+          });
+          this.incomespro.getIncomeItems().valueChanges().subscribe(data => {
+            this.arr = [] as Number[];
+            this.arrColor = [] as string[];
+            data.forEach(d => {
     
+              this.arr.push(d.amount);
+              this.arrColor.push(d.color);
+            })
+            this.createChart(this.arr, "incomes", this.arrColor);
+          })
+    }
+
+    if (this.expensesPro.getExpensesItems()) {
+      this.expensesListRef = this.expensesPro.getExpensesItems()
+        .snapshotChanges()
+        .map(
+          changes => {
+            return changes.map(c => ({
+              key: c.payload.key, ...c.payload.val()
+            }))
+          });
+
+          this.expensesPro.getExpensesItems().valueChanges().subscribe(data => {
+            this.arr = [] as Number[];
+            this.arrColor = [] as string[];
+            data.forEach(d => {
+              this.arr.push(d.amount);
+              this.arrColor.push(d.color);
+            })
+                  this.createChart(this.arr, "expenses", this.arrColor);
+          })
+    }
+
 
 
     this.selectedSegment = 'incomes';
@@ -77,81 +97,68 @@ export class CategoriesPage {
       {
         id: "incomes",
         list: this.incomesListRef,
-
+        color:"primary"
       },
       {
         id: "expenses",
-        list: this.expensesListRef
+        list: this.expensesListRef,
+        color:"danger"
       }
     ];
+  }
+
+  public viewDidLoad(){
+    if (this.incomespro.getIncomeItems()) {
+          this.incomespro.getIncomeItems().valueChanges().subscribe(data => {
+            this.arr = [] as Number[];
+            this.arrColor = [] as string[];
+            data.forEach(d => {
+    
+              this.arr.push(d.amount);
+              this.arrColor.push(d.color);
+            })
+            this.createChart(this.arr, "incomes", this.arrColor);
+          })
+    }
+
 
   }
-  ionViewDidLoad(){
+  public createChart(arr, id, arrcolor) {
+    new Chart(document.getElementsByClassName(id), {
+      type: 'doughnut',
+      data: {
+        datasets: [
+          {
+            backgroundColor: arrcolor,
+            data: arr
+          }
+        ]
+      }
 
-   
+    });
   }
-  
-  presentPopover(myEvent,item) {
-    this.type='incomes';
-    let popover = this.popoverCtrl.create(PopoverComponent,{item:item });
+
+
+  presentPopover(myEvent, item) {
+    this.type = 'incomes';
+    let popover = this.popoverCtrl.create(PopoverComponent, { item: item });
     popover.present({
       ev: myEvent
     });
   }
 
-
-
-
-  public animateElem() {
-    this.animator.setType('flipInX').setDuration(4).show(this.myElem.nativeElement);
-  }
-
-
-
-
-  public createIncomeChart(data) {
-    this.chartData = data;
-    new Chart(document.getElementById("doughnutsIncome-chart"), {
-      type: 'doughnut',
-      data: {
-        datasets: [
-          {
-            backgroundColor: ["#004568", "#00ff00", "#005566"],
-            data: [250, 1000, 250]
-          }
-        ]
-      }
-
-    });
-  }
-
-
-  public createExpensesChart(data) {
-    new Chart(document.getElementById("doughnutsExpenses-chart"), {
-      type: 'doughnut',
-      data: {
-        labels: ["car", "house", "income2"],
-        datasets: [
-          {
-            backgroundColor: ["#ff0000", "#00ff00", "#0000ff"],
-            data: [14785, 12547, 14587]
-          }
-        ]
-      }
-
-    });
-  }
-  
   onSegmentChanged(segmentButton) {
     const selectedIndex = this.slides.findIndex((slide) => {
       return slide.id === segmentButton.value;
     });
     this.slider.slideTo(selectedIndex);
+
   }
 
   onSlideChanged(slider) {
     const currentSlide = this.slides[slider.getActiveIndex()];
     this.selectedSegment = currentSlide.id;
+    this.viewDidLoad();
   }
 
   public toAddIncome() {
@@ -160,5 +167,7 @@ export class CategoriesPage {
   public toAddExpenses() {
     this.navCtrl.push('AddExpensesPage');
   }
-
+  public animateElem() {
+    this.animator.setType('flipInX').setDuration(4).show(this.myElem.nativeElement);
+  }
 }

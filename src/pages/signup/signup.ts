@@ -8,6 +8,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { UserServiceProvider } from '../../providers/user-service/user-service';
 import { userItem } from '../../models/userItem/userItem';
+import { User } from '@firebase/auth-types';
 
 
 
@@ -18,7 +19,8 @@ import { userItem } from '../../models/userItem/userItem';
 })
 export class SignupPage {
 
-
+    user = {} as User;
+    
     userId: string;
     ionViewDidLoad() {
         console.log('ionViewDidLoad SignupPage');
@@ -50,6 +52,8 @@ export class SignupPage {
             username: ['']
 
         });
+        
+        this.user.photoURL = "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=https%3A%2F%2Fexample.com%2Fimages%2Favatar.jpg";
     }
 
     presentLoading() {

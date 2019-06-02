@@ -9,8 +9,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class BudgetServiceProvider {
 
   userId: any;
- // private budgetListRef = this.db.list<BudgetItem>('${this.userId}/budget-list');
-    
   constructor(public db:AngularFireDatabase,private afAuth: AngularFireAuth ) {
     this.afAuth.authState.subscribe(user => {
       if(user) this.userId = user.uid
@@ -34,7 +32,9 @@ export class BudgetServiceProvider {
     remouveItem(id){
       return this.db.list<BudgetItem>('/budgets/'+this.userId+'/').remove(id);
     }
-
+    updateItem(item : BudgetItem){
+      return this.db.list<BudgetItem>('/budgets/'+this.userId+'/').update(item.key,item);
+    }
   }
 
 

@@ -3,6 +3,6 @@ export interface userItem<User>{
     displayName:string
     email:string
     phoneNumber:Number
-    photoURL:string
+    photoURL:string;
   
   }

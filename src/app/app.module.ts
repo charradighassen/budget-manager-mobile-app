@@ -22,6 +22,9 @@ import { PopoverComponent } from '../components/popover/popover';
 import { HideHeaderDirective } from '../directives/hide-header/hide-header';
 import { GoalServiceProvider } from '../providers/goal-service/goal-service';
 import { UserServiceProvider } from '../providers/user-service/user-service';
+import { ToDoServiceProvider } from '../providers/to-do-service/to-do-service';
+import { DoingServiceProvider } from '../providers/doing-service/doing-service';
+import { DoneServiceProvider } from '../providers/done-service/done-service';
 
 
 export const firebaseConfig = {
@@ -68,7 +71,10 @@ export const firebaseConfig = {
     AnimationService,
     Facebook,
     GoalServiceProvider,
-    UserServiceProvider
+    UserServiceProvider,
+    ToDoServiceProvider,
+    DoingServiceProvider,
+    DoneServiceProvider,
   ]
 })
 export class AppModule {}

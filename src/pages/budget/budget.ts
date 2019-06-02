@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ActionSheetController, AlertController,  IonicPage,   NavController,   NavParams, } from 'ionic-angular';
+import { ActionSheetController, AlertController, IonicPage, NavController, NavParams, } from 'ionic-angular';
 
 import { BudgetItem } from '../../models/budgetItem/budgetItem.interface';
 import { BudgetServiceProvider } from '../../providers/budget-service/budget-service';
@@ -14,34 +14,38 @@ export class BudgetPage {
 
 
   budgetListRef: Observable<BudgetItem[]>;
-  budgetItem= {}as BudgetItem;
+  budgetItem = {} as BudgetItem;
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
+    public navCtrl: NavController,
+    public navParams: NavParams,
     private actionSheetCtrl: ActionSheetController,
-    public budgetprovider:BudgetServiceProvider
+    public budgetprovider: BudgetServiceProvider
   ) {
-   this.budgetListRef = this.budgetprovider.getBudgetItems()
-   .snapshotChanges()
-   .map(
-     changes => {
-       return changes.map(c => ({
-         key: c.payload.key, ...c.payload.val()
-       }))
-     });
+    if (this.budgetprovider.getBudgetItems()) {
+      this.budgetListRef = this.budgetprovider.getBudgetItems()
+        .snapshotChanges()
+        .map(
+          changes => {
+            return changes.map(c => ({
+              key: c.payload.key, ...c.payload.val()
+            }))
+          });
+    }
+    else{
+      console.log('no data');
+    }
+    this.budgetItem.color = "#000000";
   }
 
-  addItem(){
-    this.budgetprovider.addItem(this.budgetItem);
-  }
 
-   remouveItem(id){
+
+  remouveItem(id) {
     this.budgetprovider.remouveItem(id);
   }
-  toaddpage(){
+  toaddpage() {
     this.navCtrl.push('BudgetAddPage');
   }
-  toEditPage(item:BudgetItem){
-    this.navCtrl.setRoot('BudgetEditPage',{edititem:item});
+  toEditPage(budgetItem: BudgetItem) {
+    this.navCtrl.push('BudgetEditPage', { item: budgetItem });
   }
 }

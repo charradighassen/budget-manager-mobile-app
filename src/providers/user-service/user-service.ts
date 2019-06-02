@@ -16,7 +16,7 @@ import { User } from '@firebase/auth-types';
 export class UserServiceProvider {
 
   userId: any;
-  private userInfoListRef = this.db.list<any>('/users/${this.userId}/');
+  private userInfoListRef = this.db.list<any>('/users/'+this.userId+'/');
   constructor(public db:AngularFireDatabase,private afAuth: AngularFireAuth ) {
     this.afAuth.authState.subscribe(user => {
       if(user) this.userId = user.uid
